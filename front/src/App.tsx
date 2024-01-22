@@ -5,10 +5,10 @@ export default function App() {
     return (
         <LayoutView>
             <GridView
-                width={120}
-                height={70}
-                cellWidth={30}
-                cellHeight={30}
+                width={30}
+                height={30}
+                cellWidth={25}
+                cellHeight={25}
             />
         </LayoutView>
     );

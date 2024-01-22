@@ -3,6 +3,10 @@
 interface CssExports {
   'cell': string;
   'field': string;
+  'horizontalLine': string;
+  'horizontalLineMarker': string;
+  'verticalLine': string;
+  'verticalLineMarker': string;
 }
 export const cssExports: CssExports;
 export default cssExports;

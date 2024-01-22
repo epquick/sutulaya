@@ -1,5 +1,6 @@
+// padding
 $pagePadding: 10px;
-$pagePaddingBottomAdd: 10px;
+$smallPadding: 1px 4px 1px 4px;
 
 // colors
 $border0Color: #bbb;
@@ -9,7 +10,10 @@ $border1Color: #eee;
 $fieldBorderWidth: 2px;
 $fieldBorder: $fieldBorderWidth solid $border0Color;
 $cellBorder: 1px solid $border1Color;
+$lineBorder: 1px solid $border0Color;
 
 // fonts
-$cellFontSize: 12px;
+$cellFontSize: 11px;
 $cellFontColor: #777;
+$lineMarkerFontSize: 14px;
+$lineMarkerFontColor: #999;
