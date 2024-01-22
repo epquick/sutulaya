@@ -1,4 +1,4 @@
-import {useState} from "react"
+import {useEffect, useState} from "react"
 import styles from './GridView.module.scss'
 import DraggableContentView from "../DraggableContentView/DraggableContentView";
 
@@ -12,6 +12,13 @@ interface GridViewProps {
 export default function GridView(props: GridViewProps) {
     const [contentOffsetX, setContentOffsetX] = useState(0)
     const [contentOffsetY, setContentOffsetY] = useState(0)
+    const [windowSize, setWindowSize] = useState([0, 0])  // update to rerender on window resize
+
+    useEffect(() => {
+        const handleResize = () => setWindowSize([window.innerWidth, window.innerHeight])
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
 
     const
         xStartCell = Math.floor((-contentOffsetX) / props.cellWidth),
