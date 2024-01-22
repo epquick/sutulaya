@@ -1,0 +1,15 @@
+$pagePadding: 10px;
+$pagePaddingBottomAdd: 10px;
+
+// colors
+$border0Color: #bbb;
+$border1Color: #eee;
+
+// borders
+$fieldBorderWidth: 2px;
+$fieldBorder: $fieldBorderWidth solid $border0Color;
+$cellBorder: 1px solid $border1Color;
+
+// fonts
+$cellFontSize: 12px;
+$cellFontColor: #777;

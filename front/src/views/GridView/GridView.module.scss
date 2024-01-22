@@ -1,0 +1,22 @@
+@use '../constants';
+
+.field {
+  width: calc(100% - 2 * #{constants.$fieldBorderWidth});
+  height: calc(100% - 2 * #{constants.$fieldBorderWidth});
+  position: relative;
+  border: constants.$fieldBorder;
+  overflow: hidden;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.cell {
+  position: absolute;
+  border: constants.$cellBorder;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: constants.$cellFontSize;
+  color: constants.$cellFontColor;
+}

@@ -1,0 +1,7 @@
+@use '../constants';
+
+.layout {
+  width: calc(100vw - 2 * #{constants.$pagePadding});
+  height: calc(100vh - 2 * #{constants.$pagePadding});
+  padding: constants.$pagePadding;
+}
