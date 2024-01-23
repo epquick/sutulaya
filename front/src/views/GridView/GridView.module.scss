@@ -21,6 +21,21 @@
   color: constants.$cellFontColor;
 }
 
+.cellDone:before, .cellDone:after {
+  position: absolute;
+  left: 9px;
+  content: ' ';
+  height: 21px;
+  width: 2px;
+  background-color: #333;
+}
+.cellDone:before {
+  transform: rotate(45deg);
+}
+.cellDone:after {
+  transform: rotate(-45deg);
+}
+
 .verticalLine {
   position: absolute;
   border-left: constants.$lineBorder;

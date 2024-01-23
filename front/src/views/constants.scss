@@ -4,12 +4,13 @@ $smallPadding: 2px 5px 2px 5px;
 
 // colors
 $border0Color: #bbb;
-$border1Color: #eee;
+$border1Color: #ddd;
+$border2Color: #eee;
 
 // borders
 $fieldBorderWidth: 5px;
 $fieldBorder: $fieldBorderWidth solid $border0Color;
-$cellBorder: 1px solid $border1Color;
+$cellBorder: 1px solid $border2Color;
 $lineBorder: 5px solid $border1Color;
 $lineMarkerBorder: 1px solid $border1Color;
 $lineMarkerBackground: $border1Color;

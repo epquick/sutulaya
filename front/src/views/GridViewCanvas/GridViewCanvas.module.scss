@@ -1,0 +1,83 @@
+@use '../constants';
+
+.field {
+  width: calc(100% - 2 * #{constants.$fieldBorderWidth});
+  height: calc(100% - 2 * #{constants.$fieldBorderWidth});
+  position: relative;
+  border: constants.$fieldBorder;
+  overflow: hidden;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.cell {
+  position: absolute;
+  border: constants.$cellBorder;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: constants.$cellFontSize;
+  color: constants.$cellFontColor;
+}
+
+.cellDone:before, .cellDone:after {
+  position: absolute;
+  left: 9px;
+  content: ' ';
+  height: 21px;
+  width: 2px;
+  background-color: #333;
+}
+.cellDone:before {
+  transform: rotate(45deg);
+}
+.cellDone:after {
+  transform: rotate(-45deg);
+}
+
+.verticalLine {
+  position: absolute;
+  border-left: constants.$cellBorder;
+}
+
+.verticalLineBold {
+  z-index: 50;
+  border-left: constants.$lineBorder;
+  transform: translate(-2px, 0);
+}
+
+.verticalLineMarker {
+  position: absolute;
+  z-index: 100;
+  background: #fff;
+  border: constants.$lineMarkerBorder;
+  transform: translate(-50%, -1px);
+  font-size: constants.$lineMarkerFontSize;
+  color: constants.$lineMarkerFontColor;
+  padding: constants.$smallPadding;
+  background: constants.$lineMarkerBackground;
+}
+
+.horizontalLine {
+  position: absolute;
+  border-top: constants.$cellBorder;
+}
+
+.horizontalLineBold {
+  z-index: 50;
+  border-top: constants.$lineBorder;
+  transform: translate(0, -2px);
+}
+
+.horizontalLineMarker {
+  position: absolute;
+  z-index: 100;
+  background: #fff;
+  border: constants.$lineMarkerBorder;
+  transform: translate(-1px, -50%);
+  font-size: constants.$lineMarkerFontSize;
+  color: constants.$lineMarkerFontColor;
+  padding: constants.$smallPadding;
+  background: constants.$lineMarkerBackground;
+}

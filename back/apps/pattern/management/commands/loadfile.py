@@ -16,7 +16,7 @@ class Command(BaseCommand):
                                          height=properties.attrib['chartheight'])
 
         cross_types = {}
-        start_symbol = 0x2600
+        symbols = '☀☁☂☃☄★☆☇☈☉☊☋☌☍☎☏☐☑☒☓☘☙☚☜☟☠☡☢☣☤☥☦☧☨☩☪☫☬☭☮☯☸☺☻☼☽☾☿♀♁♂♃♄♅♆♔♕♖♗♘♙♚♛♜♝♞♟♠♡♢♣♤♥♦♧♨♩♫♮♯♰♽♾⚇⚉⚏⚐⚑⚒⚓⚔⚕⚖⚗⚘⚙⚚⚛⚜⚝⚞⚟⚠⚬⚭⚮⚲⚳⚵⚶⚷⚸⚹⚺⚻⚼⚿⛀⛁⛆⛇⛈⛉⛊⛋⛌⛍⛏⛐⛑⛒⛓⛕⛖⛗⛘⛙⛚⛛⛜⛝⛞⛟⛠⛡⛢⛣⛤⛥⛦⛧⛨⛩⛪⛫⛬⛭⛮⛯⛰⛱⛶⛷⛸⛻⛼⛾⛿✁✂✆✎✏✐✑✒✓✕✖✗✛✜✝✠✡✢✦✧✩✪✫✬✯✰✱✲✳✴✵✷✹✻✾✿❀❁❂❃❆❈❏❖❘❙❛❜❝❡❢❤❥❦❶➔➕➖➗➘➙➚➛➜➤➨➩➰➲➳➴➵➶➼➽➾➿⟀⟁⟂⟃⟄⟇⟈⟎⟏⟐⟑⟒⟓⟔⟕⟘⟙⟚⟟⟠⟡⟦⟧⟨⟩⟪⟰⟱⟲⟳⟴⤄⤅⤆⤇⤈⤉⤊⤋⤣⤤⦉⦊⦑⦒⦓⦔⦕⦖⦗⦘⦙⦚⦛⦝⦞⦟⦠⦡⦢⦣⦤⦥⦦⦧⦨⦰⦵⦶⦷⦸⦹⦺⦻⦼⦽⦾⦿⧀⧃⧄⧅⧆⧇⧈⧉⧊⧋⧌⧍⧎⧏⧐⧕⧖⧗⧘⧙⧞⧡⧢⧣⧥⧦⧧⧨⧪⧫⧬⧭⧮⧰⧲⧴⧵⧷⧺⧻⧼⧽'
 
         for palette_item in tree.findall('palette/palette_item'):
             attrib = palette_item.attrib
@@ -26,7 +26,7 @@ class Command(BaseCommand):
 
             cross_types[attrib['index']] = PatternCrossType(pattern=pattern,
                                                             color=attrib['color'],
-                                                            symbol=chr(start_symbol + len(cross_types)))
+                                                            symbol=symbols[len(cross_types) % len(symbols)])
 
         PatternCrossType.objects.bulk_create(cross_types.values())
 

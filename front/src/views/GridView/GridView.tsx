@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react"
 import styles from './GridView.module.scss'
 import DraggableContentView from "../DraggableContentView/DraggableContentView";
+import {observer} from "mobx-react-lite";
 
 interface GridViewProps {
     width: number
@@ -10,7 +11,7 @@ interface GridViewProps {
     cellRenderer: (i, j, id, className, cssValues) => any
 }
 
-export default function GridView(props: GridViewProps) {
+const GridView = observer((props: GridViewProps) => {
     const [contentOffsetX, setContentOffsetX] = useState(0)
     const [contentOffsetY, setContentOffsetY] = useState(0)
     const [windowSize, setWindowSize] = useState([0, 0])  // update to rerender on window resize
@@ -107,4 +108,7 @@ export default function GridView(props: GridViewProps) {
             </DraggableContentView>
         </div>
     )
-}
+})
+
+export default GridView
+
