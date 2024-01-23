@@ -41,6 +41,9 @@ export default function DraggableContentView(props:GridViewProps) {
 
     useEffect(() => {
         setBoundOffsets()
+    })
+
+    useEffect(() => {
         window.addEventListener('resize', setBoundOffsets);
         return () => window.removeEventListener('resize', setBoundOffsets)
     }, [])

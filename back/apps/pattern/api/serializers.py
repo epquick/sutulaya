@@ -10,14 +10,14 @@ class PatternSerializer(serializers.ModelSerializer):
 
 
 class PatternFullSerializer(serializers.ModelSerializer):
-    cross_types = serializers.SerializerMethodField()
+    crossTypes = serializers.SerializerMethodField()
     crosses = serializers.SerializerMethodField()
 
     class Meta:
         model = Pattern
         fields = '__all__'
 
-    def get_cross_types(self, obj):
+    def get_crossTypes(self, obj):
         return {cross_type.id: PatternCrossTypeSerializer(cross_type).data for cross_type in  obj.cross_types.all()}
 
     def get_crosses(self, obj):

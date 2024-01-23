@@ -1,15 +1,22 @@
 import GridView from "./views/GridView/GridView";
 import LayoutView from "./views/Layout/Layout";
+import {useEffect, useState} from "react";
+import PatternStore from "./models/PatternStore/PatternStore";
+import {observer} from "mobx-react-lite";
+import PatternView from "./views/PatternView/PatternView";
 
-export default function App() {
+const App = observer(() => {
+    const [patternStore] = useState(new PatternStore())
+
+    useEffect(() => {
+        patternStore.loadLastPattern()
+    }, [])
+
     return (
         <LayoutView>
-            <GridView
-                width={30}
-                height={30}
-                cellWidth={25}
-                cellHeight={25}
-            />
+            <PatternView patternStore={patternStore} />
         </LayoutView>
     );
-}
+})
+
+export default App

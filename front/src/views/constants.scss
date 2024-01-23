@@ -1,19 +1,21 @@
 // padding
 $pagePadding: 10px;
-$smallPadding: 1px 4px 1px 4px;
+$smallPadding: 2px 5px 2px 5px;
 
 // colors
 $border0Color: #bbb;
 $border1Color: #eee;
 
 // borders
-$fieldBorderWidth: 2px;
+$fieldBorderWidth: 5px;
 $fieldBorder: $fieldBorderWidth solid $border0Color;
 $cellBorder: 1px solid $border1Color;
-$lineBorder: 1px solid $border0Color;
+$lineBorder: 5px solid $border1Color;
+$lineMarkerBorder: 1px solid $border1Color;
+$lineMarkerBackground: $border1Color;
 
 // fonts
 $cellFontSize: 11px;
 $cellFontColor: #777;
 $lineMarkerFontSize: 14px;
-$lineMarkerFontColor: #999;
+$lineMarkerFontColor: #6A6A6A;

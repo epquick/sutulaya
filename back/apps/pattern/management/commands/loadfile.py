@@ -20,6 +20,10 @@ class Command(BaseCommand):
 
         for palette_item in tree.findall('palette/palette_item'):
             attrib = palette_item.attrib
+
+            if attrib['name'] == 'cloth':
+                continue
+
             cross_types[attrib['index']] = PatternCrossType(pattern=pattern,
                                                             color=attrib['color'],
                                                             symbol=chr(start_symbol + len(cross_types)))
@@ -30,6 +34,10 @@ class Command(BaseCommand):
 
         for stitch in tree.findall('fullstitches/stitch'):
             attrib = stitch.attrib
+
+            if attrib['palindex'] not in cross_types:
+                continue
+
             crosses.append(PatternCross(type=cross_types[attrib['palindex']],
                                         x_coord=attrib['x'],
                                         y_coord=attrib['y']))

@@ -24,31 +24,35 @@
 .verticalLine {
   position: absolute;
   border-left: constants.$lineBorder;
+  transform: translate(-2px, 0);
 }
 
 .verticalLineMarker {
   position: absolute;
   z-index: 100;
   background: #fff;
-  border: constants.$lineBorder;
+  border: constants.$lineMarkerBorder;
   transform: translate(-50%, -1px);
   font-size: constants.$lineMarkerFontSize;
   color: constants.$lineMarkerFontColor;
   padding: constants.$smallPadding;
+  background: constants.$lineMarkerBackground;
 }
 
 .horizontalLine {
   position: absolute;
   border-top: constants.$lineBorder;
+  transform: translate(0, -2px);
 }
 
 .horizontalLineMarker {
   position: absolute;
   z-index: 100;
   background: #fff;
-  border: constants.$lineBorder;
+  border: constants.$lineMarkerBorder;
   transform: translate(-1px, -50%);
   font-size: constants.$lineMarkerFontSize;
   color: constants.$lineMarkerFontColor;
   padding: constants.$smallPadding;
+  background: constants.$lineMarkerBackground;
 }

@@ -7,6 +7,7 @@ interface GridViewProps {
     height: number
     cellWidth: number
     cellHeight: number
+    cellRenderer: (i, j, id, className, cssValues) => any
 }
 
 export default function GridView(props: GridViewProps) {
@@ -32,12 +33,11 @@ export default function GridView(props: GridViewProps) {
         for (let j = yStartCell; j < yEndCell; j++) {
             const left = i * props.cellWidth, top = j * props.cellHeight
 
-            const cell = (
-                <div
-                    id={`cell_${i}_${j}`}
-                    className={styles.cell}
-                    style={{top, left, width: props.cellWidth - 1, height: props.cellHeight - 1}}
-                >&#x2661;</div>
+            const cell = props.cellRenderer(
+                i, j,
+                `cell_${i}_${j}`,
+                styles.cell,
+                {top, left, width: props.cellWidth - 1, height: props.cellHeight - 1}
             )
 
             cells.push(cell)
