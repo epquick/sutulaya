@@ -17,7 +17,7 @@ class PatternCrossType(models.Model):
     class Type(models.TextChoices):
         SIMPLE = 'S', 'simple'
 
-    pattern = models.ForeignKey(Pattern, on_delete=models.CASCADE)
+    pattern = models.ForeignKey(Pattern, on_delete=models.CASCADE, related_name='cross_types')
     type = models.CharField(max_length=1, choices=Type.choices, default=Type.SIMPLE)
     color = models.CharField(max_length=6)
     symbol = models.CharField(max_length=1)
@@ -27,7 +27,7 @@ class PatternCrossType(models.Model):
 
 
 class PatternCross(models.Model):
-    type = models.ForeignKey(PatternCrossType, on_delete=models.CASCADE)
+    type = models.ForeignKey(PatternCrossType, on_delete=models.CASCADE, related_name='crosses')
     x_coord = models.PositiveIntegerField()
     y_coord = models.PositiveIntegerField()
     is_done = models.BooleanField(default=False)

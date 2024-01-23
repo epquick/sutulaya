@@ -17,6 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from apps.pattern.api.views import LatestPattern
+
 urlpatterns = [
+    path('api/latest_pattern', LatestPattern.as_view()),
     path('admin/', admin.site.urls),
 ]
