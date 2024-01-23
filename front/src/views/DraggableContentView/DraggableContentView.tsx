@@ -46,9 +46,12 @@ export default function DraggableContentView(props:GridViewProps) {
     }, [])
 
     const onMouseDown = (e) => {
-        setIsMovement(true)
-        setStartX(e.clientX)
-        setStartY(e.clientY)
+        const {width, height} = getFieldSize()
+        if (props.contentWidth > width || props.contentHeight > height) {
+            setIsMovement(true)
+            setStartX(e.clientX)
+            setStartY(e.clientY)
+        }
     }
 
     const onMouseMove = (e) => {
