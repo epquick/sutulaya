@@ -42,8 +42,8 @@ const PatternView = observer((props:PatternViewProps) => {
         <GridViewCanvas
             width={props.patternStore.pattern.width}
             height={props.patternStore.pattern.height}
-            cellWidth={20}
-            cellHeight={20}
+            cellWidth={9}
+            cellHeight={9}
             cellRenderer={cellRenderer}
             iteration={props.patternStore.iteration}
         />
