@@ -11,10 +11,12 @@ interface GridViewProps {
 export default function DraggableContentView(props:GridViewProps) {
     const [x, setX] = useState<number>(0)
     const [y, setY] = useState<number>(0)
-    const [shiftX, setShiftX] = useState<number>(0)
-    const [shiftY, setShiftY] = useState<number>(0)
+    const [boundX, setBoundX] = useState<number>(0)
+    const [boundY, setBoundY] = useState<number>(0)
     const [startX, setStartX] = useState<number>(0)
     const [startY, setStartY] = useState<number>(0)
+    const [startClientX, setStartClientX] = useState<number>(0)
+    const [startClientY, setStartClientY] = useState<number>(0)
     const [isMovement, setIsMovement] = useState<boolean>(false)
     const [isMovementNonZero, setIsMovementNonZero] = useState<boolean>(false)
     const fieldRef = useRef()
@@ -29,8 +31,8 @@ export default function DraggableContentView(props:GridViewProps) {
 
     const setBoundOffsets = () => {
         const {width, height} = getFieldSize()
-        setShiftX(props.contentWidth < width ? Math.floor((width - props.contentWidth) / 2) : 0)
-        setShiftY(props.contentHeight < height ? Math.floor((height - props.contentHeight) / 2) : 0)
+        setBoundX(props.contentWidth < width ? Math.floor((width - props.contentWidth) / 2) : 0)
+        setBoundY(props.contentHeight < height ? Math.floor((height - props.contentHeight) / 2) : 0)
         const
             newX = Math.min(Math.max(x, -props.contentWidth + width), 0),
             newY = Math.min(Math.max(y, -props.contentHeight + height), 0)
@@ -52,8 +54,10 @@ export default function DraggableContentView(props:GridViewProps) {
         const {width, height} = getFieldSize()
         if (props.contentWidth > width || props.contentHeight > height) {
             setIsMovement(true)
-            setStartX(e.clientX)
-            setStartY(e.clientY)
+            setStartX(x)
+            setStartY(y)
+            setStartClientX(e.clientX)
+            setStartClientY(e.clientY)
         }
     }
 
@@ -64,12 +68,10 @@ export default function DraggableContentView(props:GridViewProps) {
             }
             const {width, height} = getFieldSize()
             const
-                newX = Math.min(Math.max(x + e.clientX - startX, -props.contentWidth + width), 0),
-                newY = Math.min(Math.max(y + e.clientY - startY, -props.contentHeight + height), 0)
+                newX = Math.min(Math.max(startX + Math.round((e.clientX - startClientX) * 1.5), -props.contentWidth + width), 0),
+                newY = Math.min(Math.max(startY + Math.round((e.clientY - startClientY) * 1.5), -props.contentHeight + height), 0)
             setX(newX)
             setY(newY)
-            setStartX(e.clientX)
-            setStartY(e.clientY)
             props.onOffsetChange(newX, newY)
         }
     }
@@ -83,7 +85,7 @@ export default function DraggableContentView(props:GridViewProps) {
         <div
             className={styles.draggableField}
             ref={fieldRef}
-            style={{left: x + shiftX, top: y + shiftY, cursor: isMovementNonZero ? 'move' : undefined}}
+            style={{left: x + boundX, top: y + boundY, cursor: isMovementNonZero ? 'move' : undefined}}
             onMouseDown={onMouseDown}
             onMouseMove={onMouseMove}
             onMouseUp={onMouseUp}
