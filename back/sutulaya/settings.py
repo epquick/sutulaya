@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'corsheaders',
 
     'apps.pattern',
+    'apps.builder',
 ]
 
 MIDDLEWARE = [
